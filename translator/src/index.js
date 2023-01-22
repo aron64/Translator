@@ -6,11 +6,9 @@ import ReactDOM from 'react-dom/client';
  * React FrontEnd for querying phrases to translate
                      and to display the result
  
- * Notes for initial commit:
- * This file contains a single React Component that renders the input field, 
- * which reacts to changes within itself,
- * and renders the result,
- * based on the fetch's feedback (which does not work with the input data for now) 
+ * This file contains a single React Component that renders the input field, which reacts to changes within itself,
+ * sending an HTTP POST REQUEST to the specified endpoint, with the input data,
+ * and renders the result, based on the fetch's feedback
  */
 
 class Translator extends React.Component{

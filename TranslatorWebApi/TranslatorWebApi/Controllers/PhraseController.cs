@@ -23,8 +23,9 @@ namespace TranslatorWebApi.Controllers
         [HttpPost]
         public async Task<Phrase> PostAsync(Phrase p)
         {
-            string query = String.Format("SELECT Hungarian From dictionary where English='{0}';", p.English);
+            string query = String.Format("SELECT Hungarian From dictionary where English=@phrase;", p.English);
             SqlCommand cmd = new SqlCommand(query, Program.sqlConnection);
+            cmd.Parameters.AddWithValue("@phrase",p.English);
             SqlDataReader dr = await cmd.ExecuteReaderAsync();
             //only reading once, so multi row result would be ignored.
             if (!dr.Read())
