@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using http=System.Web.Http;
 
 namespace TranslatorWebApi.Controllers
 {
@@ -27,6 +26,7 @@ namespace TranslatorWebApi.Controllers
             string query = String.Format("SELECT Hungarian From dictionary where English='{0}';", p.English);
             SqlCommand cmd = new SqlCommand(query, Program.sqlConnection);
             SqlDataReader dr = await cmd.ExecuteReaderAsync();
+            //only reading once, so multi row result would be ignored.
             if (!dr.Read())
             {
                 dr.Close();
@@ -34,13 +34,9 @@ namespace TranslatorWebApi.Controllers
             }
             else
             {
-                //does not consider multiple results
                 string res = dr.GetValue(0).ToString();
                 dr.Close();
-                return new Phrase
-                {
-                    Hungarian = res
-                };
+                return new Phrase{Hungarian = res};
             }
         }
     }

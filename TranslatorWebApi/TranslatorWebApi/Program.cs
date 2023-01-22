@@ -8,6 +8,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.IO;
+using System.Configuration;
+
 /* 
  * Author: Aron Levente Hertendi
  * C# BackEnd to query and translate matching phrases from an MSSQL database
@@ -22,13 +24,11 @@ namespace TranslatorWebApi
 {
     public class Program
     {
-        public static string connstring = "Data Source=ERIN-NB;Initial Catalog=TRANSLATOR;Integrated Security=true";
         public static SqlConnection sqlConnection { get; set; }
         public static void Main(string[] args)
-        {
-            Program.sqlConnection = new SqlConnection(Program.connstring);
-            sqlConnection.Open();
+        { 
             CreateHostBuilder(args).Build().Run();
+            sqlConnection.Close();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

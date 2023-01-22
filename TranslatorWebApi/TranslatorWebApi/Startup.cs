@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
-
+using System.Data.SqlClient;
 namespace TranslatorWebApi
 {
     public class Startup
@@ -20,6 +20,8 @@ namespace TranslatorWebApi
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            Program.sqlConnection = new SqlConnection(Configuration.GetConnectionString("translatorDB"));
+            Program.sqlConnection.Open();
         }
 
         public IConfiguration Configuration { get; }
