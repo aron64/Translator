@@ -1,9 +1,11 @@
 # React
-* ./translator
 * Make sure the port number to in the fetch call checks out.
 # C# Web Api
-* ./TranslatorWebApi
-* Interface:
-* POST: endpoint is "/Phrase", expecting a json object where the information is in a string field named English
+* Make sure the Data Source is set properly in appsettings.json
+ Interface:
+* POST /api/Phrase
+  * Description: Send English phrase to translate
+  * Request Body: Phrase item with English field
+  * Response Body: Phrase item with Hungarian field
 # Database
-* i added the scripts that include the steps to import the data to a locally hosted MSSQL database through command line and sqlcmd
+* I added the scripts that include the steps to import the data to a locally hosted MSSQL database through command line and sqlcmd utility
