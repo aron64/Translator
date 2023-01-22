@@ -9,3 +9,8 @@
   * Response Body: Phrase item with Hungarian field
 # Database
 * I added the scripts that include the steps to import the data to a locally hosted MSSQL database through command line and sqlcmd utility
+## A Phrase item the layers use between each other:
+{<br>&nbsp;&nbsp;&nbsp;&nbsp;
+     English: "",<br>&nbsp;&nbsp;&nbsp;&nbsp;
+     Hungarian: "",<br>
+}
