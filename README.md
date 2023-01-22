@@ -1,5 +1,5 @@
 # React
-* Make sure the port number to in the fetch call checks out.
+* Make sure the port number is set properly in the fetch call
 # C# Web Api
 * Make sure the Data Source is set properly in appsettings.json
  Interface:
