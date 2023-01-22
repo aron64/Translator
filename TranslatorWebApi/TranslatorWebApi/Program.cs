@@ -10,8 +10,9 @@ using System.Threading.Tasks;
 /* 
  * Author: Aron Levente Hertendi
  * C# BackEnd to query and translate matching phrases from an MSSQL database
- * 
+ * used>> dotnet add package Microsoft.AspNet.WebApi.Cors --version 5.2.9
  */
+
 
 namespace TranslatorWebApi
 {
