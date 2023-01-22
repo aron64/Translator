@@ -26,7 +26,10 @@ class Translator extends React.Component{
         error: null,
         result: "Loading...",
       });
-      fetch("https://localhost:5001/Phrase")
+      fetch("https://localhost:5001/Phrase",
+            {method:'POST',
+            headers:{'Content-Type': 'application/json'},
+            body: JSON.stringify({English: event.target.value})})
       .then(res => res.json())
       .then(
         (result) => { this.setState({value: event.target.value, result: result.hungarian, error: null}); },

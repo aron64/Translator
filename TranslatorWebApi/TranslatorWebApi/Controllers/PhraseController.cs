@@ -21,13 +21,12 @@ namespace TranslatorWebApi.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public Phrase Get()
+        [HttpPost]
+        public async Task<Phrase> PostAsync(Phrase p)
         {
-            string testPhrase = "Account Holder Name";
-            string query = String.Format("SELECT Hungarian From dictionary where English='{0}';", testPhrase);
+            string query = String.Format("SELECT Hungarian From dictionary where English='{0}';", p.English);
             SqlCommand cmd = new SqlCommand(query, Program.sqlConnection);
-            SqlDataReader dr = cmd.ExecuteReader();
+            SqlDataReader dr = await cmd.ExecuteReaderAsync();
             if (!dr.Read())
             {
                 dr.Close();
