@@ -28,7 +28,6 @@ namespace TranslatorWebApi.Controllers
             string query = String.Format("SELECT Hungarian From dictionary where English='{0}';", testPhrase);
             SqlCommand cmd = new SqlCommand(query, Program.sqlConnection);
             SqlDataReader dr = cmd.ExecuteReader();
-
             if (!dr.Read())
             {
                 dr.Close();

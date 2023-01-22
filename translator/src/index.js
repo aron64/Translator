@@ -37,7 +37,8 @@ class Translator extends React.Component{
   render(){
     var result = this.state.error
                   ?`HTTP ERROR ${this.state.error}`
-                  :this.state.result;
+                  :(this.state.result?this.state.result:"The phrase could not be found");
+
     return (
         <div>
           <form onSubmit={this.handleSubmit}>

@@ -29,7 +29,6 @@ namespace TranslatorWebApi
             Program.sqlConnection = new SqlConnection(Program.connstring);
             sqlConnection.Open();
             CreateHostBuilder(args).Build().Run();
-          //  Console.WriteLine("HERE");
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
