@@ -53,7 +53,7 @@ namespace TranslatorWebApi
             }
             app.UseHttpsRedirection();
             app.UseRouting();
-            Console.WriteLine("HELLO");
+   
             app.UseCors(builder =>
             {
                 builder

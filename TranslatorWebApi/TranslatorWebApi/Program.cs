@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using System.Data.SqlClient;
 /* 
  * Author: Aron Levente Hertendi
  * C# BackEnd to query and translate matching phrases from an MSSQL database
@@ -18,6 +18,7 @@ namespace TranslatorWebApi
 {
     public class Program
     {
+        SqlConnection sqlConnection;
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
