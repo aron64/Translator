@@ -12,6 +12,9 @@ using System.IO;
  * Author: Aron Levente Hertendi
  * C# BackEnd to query and translate matching phrases from an MSSQL database
  * used>> dotnet add package Microsoft.AspNet.WebApi.Cors --version 5.2.9
+ * added System.Data.SqlClient through NuGet
+ * 
+ * Make sure the ConnectionString is set properly for your environment.
  */
 
 
@@ -25,27 +28,8 @@ namespace TranslatorWebApi
         {
             Program.sqlConnection = new SqlConnection(Program.connstring);
             sqlConnection.Open();
-            string QueryM = "SELECT * From dictionary";
-            SqlCommand cmdM = new SqlCommand(QueryM, sqlConnection);
-            SqlDataReader drM = cmdM.ExecuteReader();
-            string path = @".\MyTest.txt";
-            
-            using (StreamWriter sw = File.CreateText(path))
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    drM.Read();
-                
-                    sw.WriteLine(drM.GetValue(0) + "\t" +
-                    drM.GetValue(1) + "\t" +
-                    drM.GetValue(2) + "\t" +
-                    drM.GetValue(3) + "\t" +
-                    drM.GetValue(4));
-                }
-            }
-            Console.WriteLine("HERE");
             CreateHostBuilder(args).Build().Run();
-           
+          //  Console.WriteLine("HERE");
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

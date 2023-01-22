@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using http=System.Web.Http;
 
 namespace TranslatorWebApi.Controllers
 {
@@ -22,10 +24,26 @@ namespace TranslatorWebApi.Controllers
         [HttpGet]
         public Phrase Get()
         {
-            return new Phrase
+            string testPhrase = "Account Holder Name";
+            string query = String.Format("SELECT Hungarian From dictionary where English='{0}';", testPhrase);
+            SqlCommand cmd = new SqlCommand(query, Program.sqlConnection);
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (!dr.Read())
             {
-                Hungarian = "szia"
-            };
+                dr.Close();
+                return new Phrase();
+            }
+            else
+            {
+                //does not consider multiple results
+                string res = dr.GetValue(0).ToString();
+                dr.Close();
+                return new Phrase
+                {
+                    Hungarian = res
+                };
+            }
         }
     }
 }

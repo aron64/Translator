@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 
 namespace TranslatorWebApi
 {
@@ -29,7 +30,7 @@ namespace TranslatorWebApi
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication1", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TranslatorWebApi", Version = "v1" });
             });
             services.AddCors(options =>
             {
@@ -53,14 +54,8 @@ namespace TranslatorWebApi
             }
             app.UseHttpsRedirection();
             app.UseRouting();
-   
-            app.UseCors(builder =>
-            {
-                builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader();
-            });
+            
+            app.UseCors();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
