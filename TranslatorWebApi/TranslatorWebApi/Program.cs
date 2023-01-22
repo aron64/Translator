@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 /* 
  * Author: Aron Levente Hertendi
  * C# BackEnd to query and translate matching phrases from an MSSQL database
- * Initial commit: Just the default .NET CORE Web Api project
+ * 
  */
 
 namespace TranslatorWebApi
